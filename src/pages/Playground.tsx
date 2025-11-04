@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, Send, Sparkles, XCircle } from "lucide-react";
 import ApiCard from "@/components/ApiCard";
 import { useToast } from "@/hooks/use-toast";
 
@@ -61,6 +61,41 @@ const Playground = () => {
     }
   };
 
+  const handleTriggerError = async () => {
+    setLoading(true);
+    setResponse(null);
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/error`);
+      const data = await res.json().catch(() => ({}));
+
+      setResponse({
+        status: res.status,
+        data: res.ok ? data : undefined,
+        error: !res.ok ? "HTTP 500 - Internal Server Error" : undefined,
+      });
+
+      toast({
+        title: "Error ❌",
+        description: "Server returned 500 status",
+        variant: "destructive",
+      });
+    } catch (error) {
+      setResponse({
+        status: 500,
+        error: "HTTP 500 - Internal Server Error",
+      });
+
+      toast({
+        title: "Connection Error ❌",
+        description: "Could not reach the backend server",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-main p-6">
       <div className="max-w-4xl mx-auto space-y-6">
@@ -91,24 +126,47 @@ const Playground = () => {
 
           {/* API Details */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg">
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  Endpoint
-                </p>
-                <code className="text-foreground font-mono text-sm">
-                  GET /api/v1/users
-                </code>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex flex-col p-4 bg-muted/30 rounded-lg space-y-3">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    Happy Path
+                  </p>
+                  <code className="text-foreground font-mono text-sm">
+                    GET /api/v1/users
+                  </code>
+                </div>
+                <Button
+                  data-testid="send-request"
+                  onClick={handleSendRequest}
+                  disabled={loading}
+                  className="gap-2 shadow-soft"
+                >
+                  <Send className="w-4 h-4" />
+                  {loading ? "Sending..." : "Send Request"}
+                </Button>
               </div>
-              <Button
-                data-testid="send-request"
-                onClick={handleSendRequest}
-                disabled={loading}
-                className="gap-2 shadow-soft"
-              >
-                <Send className="w-4 h-4" />
-                {loading ? "Sending..." : "Send Request"}
-              </Button>
+
+              <div className="flex flex-col p-4 bg-muted/30 rounded-lg space-y-3">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    Negative Path
+                  </p>
+                  <code className="text-foreground font-mono text-sm">
+                    GET /api/v1/error
+                  </code>
+                </div>
+                <Button
+                  data-testid="trigger-error"
+                  onClick={handleTriggerError}
+                  disabled={loading}
+                  variant="destructive"
+                  className="gap-2 shadow-soft"
+                >
+                  <XCircle className="w-4 h-4" />
+                  {loading ? "Triggering..." : "Trigger Error"}
+                </Button>
+              </div>
             </div>
 
             <div className="text-xs text-muted-foreground">
