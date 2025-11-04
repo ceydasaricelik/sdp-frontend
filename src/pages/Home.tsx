@@ -12,11 +12,11 @@ const Home = () => {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Sparkles className="w-8 h-8 text-primary" />
             <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-              SDP API Frontend
+              SDP API Lab
             </h1>
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground font-light">
-            A cute playground for testing your Rails API endpoints 💫
+            Test and explore your Rails endpoints 💫
           </p>
         </div>
 
