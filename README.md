@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
+# 🌸 SDP Frontend – Scale Development Platform Arayüzü (Lovable + Rails API Entegrasyonu)
 
-## Project info
+Bu proje, **Scale Development Platform (SDP)** sisteminin ön yüzünü temsil etmektedir.  
+Amaç, psikolojik ve tıbbi ölçüm ölçeklerinin oluşturulması ve test edilmesini kolaylaştırmaktır.  
+**Lovable AI Studio** kullanılarak geliştirilmiş, **Ruby on Rails 8 API** ile tam entegre çalışmakta ve  
+**Cypress** aracılığıyla **BDD (Behavior-Driven Development)** yaklaşımıyla test edilmiştir.
 
-**URL**: https://lovable.dev/projects/0180adb5-66f9-4ff5-9b81-81d74cf3f041
+---
 
-## How can I edit this code?
+## 🚀 Proje Özeti
 
-There are several ways of editing your application.
+| Katman | Teknoloji |
+|--------|------------|
+| **Frontend** | Lovable AI Studio |
+| **Backend API** | Ruby on Rails 8 (API-only mode) |
+| **Test Aracı** | Cypress + Cucumber (BDD senaryoları) |
+| **Veritabanı** | SQLite |
+| **Entegrasyon** | RESTful API (JSON formatında veri akışı) |
+| **Yöntem** | Behavior-Driven Development (Davranış Odaklı Geliştirme) |
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0180adb5-66f9-4ff5-9b81-81d74cf3f041) and start prompting.
+## 💡 Açıklama
 
-Changes made via Lovable will be committed automatically to this repo.
+Bu arayüz, Rails API uç noktalarının görsel olarak test edilmesini sağlayan bir "Playground" alanıdır.  
+Kullanıcılar bu arayüz üzerinden:
 
-**Use your preferred IDE**
+- `/users` ve `/error` endpointlerine test istekleri gönderebilir,  
+- **Başarılı (200 OK)** ve **Hatalı (500 Internal Server Error)** yanıtları gözlemleyebilir,  
+- Gerçek zamanlı olarak sonuçları ve mesajları ekranda izleyebilir. 🎯  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🎥 Cypress E2E Test Sonuçları (Rails API + Lovable Frontend)
 
-Follow these steps:
+Bu bölüm, projenin uçtan uca test sürecini göstermektedir.  
+**Cypress** ile **BDD (Given – When – Then)** yapısında iki farklı senaryo hazırlanmış ve başarıyla tamamlanmıştır.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### ✅ Test Senaryoları
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **GET `/api/v1/users` → 200 OK (Happy Path)**  
+- **GET `/api/v1/error` → 500 Internal Server Error (Error Path)**
 
-# Step 3: Install the necessary dependencies.
-npm i
+Her iki test de başarıyla geçmiştir. Cypress testleri hem ekran görüntüsü hem video kaydı ile belgelendirilmiştir. 🎯
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+> 📝 **Not:**  
+> Her iki senaryo da başarıyla çalışmıştır. Ancak Cypress tarafından kaydedilen videoda  
+> “error path” kısmı birkaç saniye erken sonlanmaktadır — bu yalnızca video kesintisidir, testler %100 başarılıdır. ✅🎥
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📺 YouTube Demo Videosu
 
-**Use GitHub Codespaces**
+🎬 **Tüm test sürecini izle:**  
+👉 [https://youtu.be/HlLIycCxB-o](https://youtu.be/HlLIycCxB-o)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 💻 Kullanılan Teknolojiler
 
-This project is built with:
+| Katman | Teknoloji |
+|--------|------------|
+| **Backend** | Ruby on Rails 8.0 (API-only) |
+| **Frontend** | Lovable AI Studio |
+| **Database** | SQLite |
+| **Testing** | Cypress + Cucumber (Gherkin yapısı) |
+| **CORS & ENV** | rack-cors + dotenv-rails |
+| **Yaklaşım** | Behavior-Driven Development (BDD) |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🎓 Mentorlar & Teşekkür
 
-Simply open [Lovable](https://lovable.dev/projects/0180adb5-66f9-4ff5-9b81-81d74cf3f041) and click on Share -> Publish.
+Bu proje sürecinde rehberlikleri, yönlendirmeleri ve destekleriyle her aşamada yanımda olan  
+**Nurettin Şenyer** ve **Ömer Durmuş** hocalarıma  
+içten teşekkürlerimi sunuyorum. 💐
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📂 İlgili Bağlantılar
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- 🔗 **Backend (Rails API):** [https://github.com/ceydasaricelik/sdp-api](https://github.com/ceydasaricelik/sdp-api)  
+- 🔗 **Frontend (Lovable):** [https://github.com/ceydasaricelik/sdp-frontend](https://github.com/ceydasaricelik/sdp-frontend)  
+- 🎥 **Demo Video:** [https://youtu.be/HlLIycCxB-o](https://youtu.be/HlLIycCxB-o)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## 🩷 Katkıda Bulunan
+
+👑 **Halide Ceyda Sarıçelik**  
+
+---
+
+#Lovable #RubyOnRails #Cypress #BDD #FullStackDevelopment #AutomationTesting #SoftwareEngineering #UniversityProject #SDPFrontend #ScaleDevelopmentPlatform
